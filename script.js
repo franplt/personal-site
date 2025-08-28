@@ -128,11 +128,11 @@ function initExperienceTimeline() {
 
 // Contact form functionality
 function initContactForm() {
-    const emailLink = document.querySelector('.email-link');
+    const emailButton = document.querySelector('.email-button');
     const toast = document.getElementById('copy-toast');
-    
-    if (emailLink && toast) {
-        emailLink.addEventListener('click', function(e) {
+
+    if (emailButton && toast) {
+        emailButton.addEventListener('click', function(e) {
             e.preventDefault();
             const email = this.getAttribute('data-email');
             
