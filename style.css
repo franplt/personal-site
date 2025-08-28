@@ -475,23 +475,6 @@ body {
     margin-bottom: var(--space-2xl);
 }
 
-.email-button {
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: var(--space-md) var(--space-xl);
-    border-radius: 8px;
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: inherit;
-}
-
-.email-button:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
-}
 
 .contact-note {
     color: var(--text-muted);
@@ -507,14 +490,21 @@ body {
     flex-wrap: wrap;
 }
 
-.email-link {
+.email-button {
     color: var(--accent-color);
     text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
     font-weight: 500;
     transition: color 0.2s ease;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    cursor: pointer;
 }
 
-.email-link:hover {
+.email-button:hover {
     color: var(--accent-hover);
 }
 
@@ -720,10 +710,6 @@ a:not(.nav-link):not(.resume-button):not(.email-button):not(.error-link):hover {
         height: 80px;
     }
     
-    .email-button {
-        font-size: var(--font-size-base);
-        padding: var(--space-sm) var(--space-lg);
-    }
 }
 
 /* Print styles */
