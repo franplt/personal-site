@@ -110,7 +110,7 @@ function initExperienceTimeline() {
         
         // Create company link if URL exists
         const companyText = role.url ? 
-            `<a href="${role.url}" target="_blank" rel="noopener">${role.company}</a>` : 
+            `<a href="${role.url}" target="_blank" rel="noopener noreferrer">${role.company}</a>` : 
             role.company;
         
         timelineItem.innerHTML = `
