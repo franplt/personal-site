@@ -2,7 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 const outDir = '_site';
-const pages = ['about.html', 'experience.html', 'writing.html', 'links.html', '404.html', 'index.html', 'style.css', 'script.js'];
+const pages = [
+  'about.html',
+  'experience.html',
+  'writing.html',
+  'links.html',
+  '404.html',
+  'index.html',
+  'style.css',
+  'script.js',
+  'robots.txt',
+  'sitemap.xml'
+];
 
 function processIncludes(content) {
   const include = (_, includePath) => {

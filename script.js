@@ -124,7 +124,7 @@ function initExperienceTimeline() {
         
         // Create company link if URL exists
         const companyText = role.url ? 
-            `<a href="${role.url}" target="_blank" rel="noopener">${role.company}</a>` : 
+            `<a href="${role.url}" target="_blank" rel="noopener noreferrer">${role.company}</a>` : 
             role.company;
         
         timelineItem.innerHTML = `
@@ -142,11 +142,11 @@ function initExperienceTimeline() {
 
 // Contact form functionality
 function initContactForm() {
-    const emailLink = document.querySelector('.email-link');
+    const emailButton = document.querySelector('.email-button');
     const toast = document.getElementById('copy-toast');
-    
-    if (emailLink && toast) {
-        emailLink.addEventListener('click', function(e) {
+
+    if (emailButton && toast) {
+        emailButton.addEventListener('click', function(e) {
             e.preventDefault();
             const email = this.getAttribute('data-email');
             
