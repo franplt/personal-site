@@ -2,13 +2,29 @@ const fs = require('fs');
 const path = require('path');
 
 const outDir = '_site';
-const pages = ['about.html', 'experience.html', 'writing.html', 'links.html', '404.html', 'index.html', 'style.css', 'script.js'];
+
+const pages = [
+  'about.html',
+  'experience.html',
+  'writing.html',
+  'links.html',
+  '404.html',
+  'index.html',
+  'style.css',
+  'script.js',
+  'robots.txt',
+  'sitemap.xml'
+];
 
 function processIncludes(content) {
-  return content.replace(/<!--#include \"([^\"]+)\" -->/g, (_, includePath) => {
+  const include = (_, includePath) => {
     const filePath = path.join(__dirname, includePath);
     return fs.readFileSync(filePath, 'utf8');
-  });
+  };
+  content = content.replace(/<!--#include \"([^\"]+)\" -->/g, include);
+  content = content.replace(/<div\s+data-include="([^"]+)"\s*><\/div>/g, include);
+  return content;
+
 }
 
 function build() {
