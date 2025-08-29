@@ -1,17 +1,31 @@
 // Set current year in footer
 document.addEventListener('DOMContentLoaded', function() {
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-    
-    // Initialize page functionality
-    initNavigation();
-    initExperienceTimeline();
-    initContactForm();
-    initResumeButton();
-    initHeaderScroll();
+    loadIncludes().then(() => {
+        const yearElement = document.getElementById('year');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+
+        // Initialize page functionality
+        initNavigation();
+        initExperienceTimeline();
+        initContactForm();
+        initResumeButton();
+        initHeaderScroll();
+    });
 });
+
+function loadIncludes() {
+    const includeElements = document.querySelectorAll('[data-include]');
+    const promises = Array.from(includeElements).map(el => {
+        const file = el.getAttribute('data-include');
+        return fetch(file)
+            .then(resp => (resp.ok ? resp.text() : ''))
+            .then(html => { el.outerHTML = html; })
+            .catch(() => {});
+    });
+    return Promise.all(promises);
+}
 
 // Experience data
 const experienceData = [
