@@ -20,9 +20,14 @@ function loadIncludes() {
     const promises = Array.from(includeElements).map(el => {
         const file = el.getAttribute('data-include');
         return fetch(file)
-            .then(resp => (resp.ok ? resp.text() : ''))
-            .then(html => { el.outerHTML = html; })
-            .catch(() => {});
+            .then(resp => (resp.ok ? resp.text() : Promise.reject(resp.status)))
+            .then(html => {
+                el.insertAdjacentHTML('beforebegin', html);
+                el.remove();
+            })
+            .catch(err => {
+                console.error(`Failed to load include: ${file}`, err);
+            });
     });
     return Promise.all(promises);
 }
