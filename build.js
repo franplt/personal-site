@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const outDir = '_site';
+
 const pages = [
   'about.html',
   'experience.html',
@@ -23,6 +24,7 @@ function processIncludes(content) {
   content = content.replace(/<!--#include \"([^\"]+)\" -->/g, include);
   content = content.replace(/<div\s+data-include="([^"]+)"\s*><\/div>/g, include);
   return content;
+
 }
 
 function build() {
